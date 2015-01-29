@@ -10,16 +10,21 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+// Static Variables
 var apikey = "xzmgkprscy5h8j6vbfvzk8zh";
 var baseUrl = "http://data.tmsapi.com/v1";
 var showtimesUrl = baseUrl + '/movies/showings';
 var trailerUrl = baseUrl + '/screenplayTrailers';
-var zipCode = "11221";
 var d = new Date();
 var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
 var mIDs = []
+var latitude, longitude
 
+
+// On Ready
 $(document).ready(function() {
+	navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
+
 	$.ajax({
     url: showtimesUrl,
 		data: {startDate: today,
@@ -30,6 +35,20 @@ $(document).ready(function() {
     dataType: "jsonp",
 	});
 });
+
+
+// Functions
+function geoSuccess(position) {
+	latitude = position.coords.latitude
+	longitude = position.coords.longitude
+	$(document.body).prepend(latitude+" "+longitude);
+}
+
+function geoError(error) {
+    alert('code: '    + error.code    + '\n' +
+          'message: ' + error.message + '\n');
+}
+
 
 function dataHandler(data) {
 	$.each(data, function(index, movie) {
