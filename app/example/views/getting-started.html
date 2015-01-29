@@ -1,0 +1,87 @@
+<div class="padding">
+
+  <super-navbar>
+    <super-navbar-title>
+      Darkly
+    </super-navbar-title>
+  </super-navbar>
+
+ 
+  <super-navigate view-id="using-the-scanner">
+    <button class="button button-block button-positive icon-left super-wand">Using the AppGyver Scanner</button>
+  </super-navigate>
+
+  <super-navigate view-id="learn-more">
+    <button class="button button-block button-positive icon-left super-university">Learn more</button>
+  </super-navigate>
+ 
+
+
+</div>
+
+
+
+<div id="tabContainer">
+    <div id="tabs">
+      <ul>
+       	<button id="tabHeader_1">Page 1</button>
+        <button id="tabHeader_2">Page 2</button>
+      </ul>
+    </div>
+    <div id="tabscontent">
+      <div class="tabpage" id="tabpage_1">
+        <h2>Page 1</h2>
+      </div>
+      <div class="tabpage" id="tabpage_2">
+        <h2>Page 2</h2>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+  window.onload=function() {
+
+  // get tab container
+  	var container = document.getElementById("tabContainer");
+		var tabcon = document.getElementById("tabscontent");
+		//alert(tabcon.childNodes.item(1));
+    // set current tab
+    var navitem = document.getElementById("tabHeader_1");
+		
+    //store which tab we are on
+    var ident = navitem.id.split("_")[1];
+		//alert(ident);
+    navitem.parentNode.setAttribute("data-current",ident);
+    //set current tab with class of activetabheader
+    navitem.setAttribute("class","tabActiveHeader");
+
+    //hide two tab contents we don't need
+   	 var pages = tabcon.getElementsByTagName("div");
+    	for (var i = 1; i < pages.length; i++) {
+     	 pages.item(i).style.display="none";
+		};
+
+    //this adds click event to tabs
+    var tabs = container.getElementsByTagName("button");
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].onclick=displayPage;
+    }
+}
+
+// on click of one of tabs
+function displayPage() {
+  var current = this.parentNode.getAttribute("data-current");
+  //remove class of activetabheader and hide old contents
+  document.getElementById("tabHeader_" + current).removeAttribute("class");
+  document.getElementById("tabpage_" + current).style.display="none";
+
+  var ident = this.id.split("_")[1];
+  //add class of activetabheader to new active tab and show contents
+  this.setAttribute("class","tabActiveHeader");
+  document.getElementById("tabpage_" + ident).style.display="block";
+  this.parentNode.setAttribute("data-current",ident);
+}
+</script>
+
+
+
