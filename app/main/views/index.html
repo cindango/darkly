@@ -5,7 +5,8 @@
       Darkly
     </super-navbar-title>
   </super-navbar>
- 
+
+	<div id="messaging">  
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -37,6 +38,7 @@ function geoError(error) {
   // alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
 
   // For testing on desktop
+  $("#messaging").append("<p>Geo-location failed. Showing results for Cindy's apartment!</p>");
 	geoLat = 40.692;
 	geoLng = -73.925;
 	getData(geoLat, geoLng);
