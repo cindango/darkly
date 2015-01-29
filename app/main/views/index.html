@@ -35,10 +35,20 @@ $(document).ready(function() {
 function dataHandler(data) {
 	console.dir("fired");
 	$.each(data, function(index, movie) {
+		$(document.body).append("<h1>"+movie.title+"</h1>");
+		var lastTheatre
 	  $.each(movie.showtimes, function(index, showtime) {
-	    var time = showtime.dateTime
-	    $(document.body).append(time);
+		  var date = new Date(showtime.dateTime);
+		  var time = date.getHours() + ":" + date.getMinutes();
+	  	if (lastTheatre == showtime.theatre.id) {
+		    $("#"+lastTheatre).append("<p>"+time+"</p>");
+	  	} else {
+	  		lastTheatre = showtime.theatre.id
+	  		lastTime = time
+		    $(document.body).append("<div id="+lastTheatre+" "+time+"><h2>"+showtime.theatre.name+"</h2><p>"+time+"</p>");
+	  	}
 	  });
 	});
 }
+
 </script>
