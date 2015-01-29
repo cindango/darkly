@@ -7,6 +7,7 @@
   </super-navbar>
 
 	<div id="messaging">  
+	</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -88,7 +89,8 @@ function getTrailers() {
     url: trailerUrl,
 		data: {rootids: mIDs,
 					 trailersonly: 1,
-					 player_url: 1,
+					 bitrateids: "461,214",
+					 best_eclip: 1,
 					 api_key: apikey,
 					},
 		success: trailerHandler,
@@ -99,9 +101,9 @@ function trailerHandler(data) {
 	console.dir(data.response.trailers)
 	$.each(data.response.trailers, function(index, trailer) {
 		var tmID = trailer.RootId
-		var embedLink = trailer.Url
-		console.dir(embedLink)
-		$("h1#"+tmID).after(embedLink);
+		var embed = trailer.Url
+		console.dir(embed)
+		$("h1#"+tmID).after(embed);
 	});
 }
 </script>
