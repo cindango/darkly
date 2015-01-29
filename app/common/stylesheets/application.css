@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'aaux proregular';
-    src: asset-url('/fonts/aaux_pro_regular-webfont.eot');
-    src: asset-url('/fonts/aaux_pro_regular-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-url('/fonts/aaux_pro_regular-webfont.woff') format('woff'),
-         asset-url('/fonts/aaux_pro_regular-webfont.ttf') format('truetype'),
-         asset-url('/fonts/aaux_pro_regular-webfont.svg#aaux_proregularregular') format('svg');
+    src: asset-url('http://cindyho.co/darkly/fonts/aaux_pro_regular-webfont.eot');
+    src: asset-url('http://cindyho.co/darkly/fonts/aaux_pro_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_regular-webfont.woff') format('woff'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_regular-webfont.ttf') format('truetype'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_regular-webfont.svg#aaux_proregularregular') format('svg');
     font-weight: light;
     font-style: normal;
 
@@ -12,11 +12,11 @@
 
 @font-face {
     font-family: 'aaux probold';
-    src: asset-url('/fonts/aaux_pro_bd-webfont.eot');
-    src: asset-url('/fonts/aaux_pro_bd-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-url('/fonts/aaux_pro_bd-webfont.woff') format('woff'),
-         asset-url('/fonts/aaux_pro_bd-webfont.ttf') format('truetype'),
-         asset-url('/fonts/aaux_pro_bd-webfont.svg#aaux_proboldregular') format('svg');
+    src: asset-url('http://cindyho.co/darkly/fonts/aaux_pro_bd-webfont.eot');
+    src: asset-url('http://cindyho.co/darkly/fonts/aaux_pro_bd-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_bd-webfont.woff') format('woff'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_bd-webfont.ttf') format('truetype'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_bd-webfont.svg#aaux_proboldregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -24,11 +24,11 @@
 
 @font-face {
     font-family: 'aaux probold';
-    src: asset-url('/fonts/aaux_pro_blk-webfont.eot');
-    src: asset-url('/fonts/aaux_pro_blk-webfont.eot?#iefix') format('embedded-opentype'),
-         asset-url('/fonts/aaux_pro_blk-webfont.woff') format('woff'),
-         asset-url('/fonts/aaux_pro_blk-webfont.ttf') format('truetype'),
-         asset-url('/fonts/aaux_pro_blk-webfont.svg#aaux_problackregular') format('svg');
+    src: asset-url('http://cindyho.co/darkly/fonts/aaux_pro_blk-webfont.eot');
+    src: asset-url('http://cindyho.co/darkly/fonts/aaux_pro_blk-webfont.eot?#iefix') format('embedded-opentype'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_blk-webfont.woff') format('woff'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_blk-webfont.ttf') format('truetype'),
+         asset-url('http://cindyho.co/darkly/fonts/aaux_pro_blk-webfont.svg#aaux_problackregular') format('svg');
     font-weight: bold;
     font-style: normal;
 
