@@ -7,3 +7,38 @@
   </super-navbar>
  
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+// construct the url with parameter values
+var apikey = "xzmgkprscy5h8j6vbfvzk8zh";
+var baseUrl = "http://data.tmsapi.com/v1";
+var showtimesUrl = baseUrl + '/movies/showings';
+var zipCode = "11221";
+var d = new Date();
+var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+
+$(document).ready(function() {
+
+	// send off the query
+	$.ajax({
+    url: showtimesUrl,
+		data: {startDate: today,
+					 zip: zipCode,
+					 jsonp: "dataHandler",
+					 api_key: apikey
+					},
+    dataType: "jsonp",
+	});
+});
+
+function dataHandler(data) {
+	console.dir("fired");
+	$.each(data, function(index, movie) {
+	  $.each(movie.showtimes, function(index, showtime) {
+	    var time = showtime.dateTime
+	    $(document.body).append(time);
+	  });
+	});
+}
+</script>
