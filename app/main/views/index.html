@@ -81,7 +81,7 @@ function dataHandler(data) {
 	  	} else {
 	  		lastTheatre = showtime.theatre.id
 	  		// This line adds a new theatre and the first time under it
-		    $(document.body).append("<h2>"+showtime.theatre.name+"</h2><p id='"+mID+lastTheatre+"'>"+time+"</p>");
+		    $(document.body).append("<strong>"+showtime.theatre.name+"</strong><p id='"+mID+lastTheatre+"'>"+time+"</p>");
 	  	}
 	  });
 	});
