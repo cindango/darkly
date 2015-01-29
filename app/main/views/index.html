@@ -28,7 +28,8 @@ $(document).ready(function() {
 	$.ajax({
     url: showtimesUrl,
 		data: {startDate: today,
-					 zip: zipCode,
+					 lat: latitude,
+					 lng: longitude,
 					 jsonp: "dataHandler",
 					 api_key: apikey
 					},
@@ -41,7 +42,6 @@ $(document).ready(function() {
 function geoSuccess(position) {
 	latitude = position.coords.latitude
 	longitude = position.coords.longitude
-	$(document.body).prepend(latitude+" "+longitude);
 }
 
 function geoError(error) {
