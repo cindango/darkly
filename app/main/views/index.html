@@ -31,6 +31,7 @@ $(document).ready(function() {
 
 function dataHandler(data) {
 	$.each(data, function(index, movie) {
+		// Edit movie title display here
 		$(document.body).append("<h1>"+movie.title+"</h1>");
 		var lastTheatre
 		var mID = movie.rootId
@@ -38,9 +39,11 @@ function dataHandler(data) {
 		  var date = new Date(showtime.dateTime);
 		  var time = date.getHours() + ":" + ('0'+date.getMinutes()).slice(-2);
 	  	if (lastTheatre == showtime.theatre.id) {
+	  		// This line appends times to a theatre that's already listed
 		    $("p#"+mID+lastTheatre).append(" "+time);
 	  	} else {
 	  		lastTheatre = showtime.theatre.id
+	  		// This line adds a new theatre and the first time under it
 		    $(document.body).append("<h2>"+showtime.theatre.name+"</h2><p id='"+mID+lastTheatre+"'>"+time+"</p>");
 	  	}
 	  });
