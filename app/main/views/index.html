@@ -18,13 +18,31 @@ var trailerUrl = baseUrl + '/screenplayTrailers';
 var d = new Date();
 var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
 var mIDs = []
-var latitude, longitude
 
 
 // On Ready
 $(document).ready(function() {
 	navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
+});
 
+
+// Functions
+function geoSuccess(position) {
+	geoLat = position.coords.latitude;
+	geoLng = position.coords.longitude;
+	getData(geoLat, geoLng);
+}
+
+function geoError(error) {
+  // alert('code: '    + error.code    + '\n' + 'message: ' + error.message + '\n');
+
+  // For testing on desktop
+	geoLat = 40.692;
+	geoLng = -73.925;
+	getData(geoLat, geoLng);
+}
+
+function getData(latitude, longitude) {
 	$.ajax({
     url: showtimesUrl,
 		data: {startDate: today,
@@ -35,20 +53,7 @@ $(document).ready(function() {
 					},
     dataType: "jsonp",
 	});
-});
-
-
-// Functions
-function geoSuccess(position) {
-	latitude = position.coords.latitude
-	longitude = position.coords.longitude
 }
-
-function geoError(error) {
-    alert('code: '    + error.code    + '\n' +
-          'message: ' + error.message + '\n');
-}
-
 
 function dataHandler(data) {
 	$.each(data, function(index, movie) {
