@@ -10,7 +10,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript">
-// construct the url with parameter values
 var apikey = "xzmgkprscy5h8j6vbfvzk8zh";
 var baseUrl = "http://data.tmsapi.com/v1";
 var showtimesUrl = baseUrl + '/movies/showings';
@@ -19,8 +18,6 @@ var d = new Date();
 var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
 
 $(document).ready(function() {
-
-	// send off the query
 	$.ajax({
     url: showtimesUrl,
 		data: {startDate: today,
@@ -33,22 +30,20 @@ $(document).ready(function() {
 });
 
 function dataHandler(data) {
-	console.dir("fired");
 	$.each(data, function(index, movie) {
 		$(document.body).append("<h1>"+movie.title+"</h1>");
 		var lastTheatre
+		var mID = movie.rootId
 	  $.each(movie.showtimes, function(index, showtime) {
 		  var date = new Date(showtime.dateTime);
-		  var time = date.getHours() + ":" + date.getMinutes();
+		  var time = date.getHours() + ":" + ('0'+date.getMinutes()).slice(-2);
 	  	if (lastTheatre == showtime.theatre.id) {
-		    $("#"+lastTheatre).append("<p>"+time+"</p>");
+		    $("p#"+mID+lastTheatre).append(" "+time);
 	  	} else {
 	  		lastTheatre = showtime.theatre.id
-	  		lastTime = time
-		    $(document.body).append("<div id="+lastTheatre+" "+time+"><h2>"+showtime.theatre.name+"</h2><p>"+time+"</p>");
+		    $(document.body).append("<h2>"+showtime.theatre.name+"</h2><p id='"+mID+lastTheatre+"'>"+time+"</p>");
 	  	}
 	  });
 	});
 }
-
 </script>
