@@ -13,9 +13,11 @@
 var apikey = "xzmgkprscy5h8j6vbfvzk8zh";
 var baseUrl = "http://data.tmsapi.com/v1";
 var showtimesUrl = baseUrl + '/movies/showings';
+var trailerUrl = baseUrl + '/screenplayTrailers';
 var zipCode = "11221";
 var d = new Date();
 var today = d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+var mIDs = []
 
 $(document).ready(function() {
 	$.ajax({
@@ -31,10 +33,12 @@ $(document).ready(function() {
 
 function dataHandler(data) {
 	$.each(data, function(index, movie) {
-		// Edit movie title display here
-		$(document.body).append("<h1>"+movie.title+"</h1>");
-		var lastTheatre
 		var mID = movie.rootId
+		mIDs += mID+","
+
+		// Edit movie title display here
+		$(document.body).append("<h1 id='"+mID+"''>"+movie.title+"</h1>");
+		var lastTheatre
 	  $.each(movie.showtimes, function(index, showtime) {
 		  var date = new Date(showtime.dateTime);
 		  var time = date.getHours() + ":" + ('0'+date.getMinutes()).slice(-2);
@@ -47,6 +51,31 @@ function dataHandler(data) {
 		    $(document.body).append("<h2>"+showtime.theatre.name+"</h2><p id='"+mID+lastTheatre+"'>"+time+"</p>");
 	  	}
 	  });
+	});
+	getTrailers(mIDs);
+}
+
+function getTrailers() {
+	mIDs = mIDs.replace(/,+$/, "");
+
+	$.ajax({
+    url: trailerUrl,
+		data: {rootids: mIDs,
+					 trailersonly: 1,
+					 player_url: 1,
+					 api_key: apikey,
+					},
+		success: trailerHandler,
+	});
+}
+
+function trailerHandler(data) {
+	console.dir(data.response.trailers)
+	$.each(data.response.trailers, function(index, trailer) {
+		var tmID = trailer.RootId
+		var embedLink = trailer.Url
+		console.dir(embedLink)
+		$("h1#"+tmID).after(embedLink);
 	});
 }
 </script>
