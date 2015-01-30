@@ -6,10 +6,13 @@
 
 	<div id="messaging">  
 	</div>
-
+<video id="trailer" class="video-js vjs-default-skin" controls
+ preload="auto" width="240" height="360" poster="http://developer.tmsimg.com/movieposters/v5/AllPhotos/11095407/p11095407_p_v5_aa.jpg?api_key=xzmgkprscy5h8j6vbfvzk8zh"
+ data-setup="{}">
+ <source src="http://www.totaleclips.com/Player/Bounce.aspx?eclipid=e135866&bitrateid=461&vendorid=2223&type=.mp4" type='video/mp4'>
+</video>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 // Static Variables
 var apikey = "xzmgkprscy5h8j6vbfvzk8zh";
@@ -89,7 +92,7 @@ function getTrailers() {
     url: trailerUrl,
 		data: {rootids: mIDs,
 					 trailersonly: 1,
-					 bitrateids: "461,214",
+					 bitrateids: "461",
 					 best_eclip: 1,
 					 api_key: apikey,
 					},

@@ -14,12 +14,17 @@ h1, h2, h3 {
 }
 
 h1.title {
-	line-height: 36px;
+	font-size: 26px;
+	line-height: 30px;
+}
+
+#trailer {
+	width: 100%;
 }
 
 .plot {
-	font-size: 24px;
-	line-height: 26px;
+	font-size: 20px;
+	line-height: 23px;
 	color: #bbb;
 }
 
@@ -47,3 +52,4 @@ h1.title {
     font-style: normal;
 
 }
+
