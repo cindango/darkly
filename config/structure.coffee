@@ -17,7 +17,7 @@ module.exports =
     {
       title: "Internet"
       id: "internet"
-      location: "http://google.com" # URLs are supported!
+      location: "http://cindyho.co/darkly" # URLs are supported!
     }
   ]
 

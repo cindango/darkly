@@ -1,19 +1,12 @@
 <div class="padding">
 
   <super-navbar>
-    <super-navbar-title>
-      Darkly
-    </super-navbar-title>
+
   </super-navbar>
 
 	<div id="messaging">  
 	</div>
 
-	<h1>Test Video: .asf</h1>
-	<video src="http://www.totaleclips.com/Player/Bounce.aspx?eclipid=e135866&bitrateid=214&vendorid=2223&type=.asf"></video>
-
-	<h1>Test Video: .mp4</h1>
-	<video src="http://www.totaleclips.com/Player/Bounce.aspx?eclipid=e133718&bitrateid=461&vendorid=2223&type=.mp4"></video>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -70,18 +63,19 @@ function dataHandler(data) {
 		mIDs += mID+","
 
 		// Edit movie title display here
-		$(document.body).append("<h1 id='"+mID+"''>"+movie.title+"</h1>");
+		$(".padding").append("<h1 id='"+mID+"' class='title'>"+movie.title+"</h1><p class='plot'>"+movie.shortDescription+"</p>");
 		var lastTheatre
 	  $.each(movie.showtimes, function(index, showtime) {
 		  var date = new Date(showtime.dateTime);
 		  var time = date.getHours() + ":" + ('0'+date.getMinutes()).slice(-2);
+		  var fandango = showtime.ticketURI;
 	  	if (lastTheatre == showtime.theatre.id) {
 	  		// This line appends times to a theatre that's already listed
 		    $("p#"+mID+lastTheatre).append(" "+time);
 	  	} else {
 	  		lastTheatre = showtime.theatre.id
 	  		// This line adds a new theatre and the first time under it
-		    $(document.body).append("<strong>"+showtime.theatre.name+"</strong><p id='"+mID+lastTheatre+"'>"+time+"</p>");
+		    $(".padding").append("<strong class='theatre'>"+showtime.theatre.name+"</strong><div id='"+mID+lastTheatre+"' class='times'><a href='"+fandango+"' target='_blank'>"+time+"</a></div>");
 	  	}
 	  });
 	});
@@ -109,7 +103,7 @@ function trailerHandler(data) {
 		var tmID = trailer.RootId
 		var embed = trailer.Url
 		console.dir(embed)
-		$("h1#"+tmID).after(embed);
+		$("h1#"+tmID).after("<div style='display:none;'>"+embed+"</div>");
 	});
 }
 </script>

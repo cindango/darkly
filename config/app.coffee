@@ -21,4 +21,4 @@ module.exports =
   # Applies on iOS only
   statusBar:
     enabled: true
-    style: "default"
+    style: "light"

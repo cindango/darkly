@@ -6,14 +6,14 @@
 
 
 navigation-bar {
-  background-color: #262624;
   color: #ffffff;
+  height: 1px;
 }
 
 navigation-bar title {
   color: #ffffff;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 navigation-bar button, navigation-bar back-bar-button {
@@ -47,3 +47,4 @@ tab-bar-item#index {
 tab-bar-item#internet {
   background-image: url(icons/search.svg);
 }
+
